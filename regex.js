@@ -16,7 +16,7 @@ function getIntWithPrompt(prompt){
 
 function createDomainDictionary(){
 
-    domains = data.match(/@[A-Za-z0-9-]*(\.[A-Za-z0-9-]*)+/g)
+    domains = data.match(/(?<=@)([A-Za-z0-9-]*)(?=(\.[A-Za-z0-9-]*)+)/g)
     uniqueDomains = [... new Set(domains)]
     domainDictionary = {}
 
