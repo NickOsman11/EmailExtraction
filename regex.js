@@ -1,11 +1,13 @@
 const fs = require('fs');
+// const request = require('request');
 const readline = require('readline-sync');
+// const data = request('http://www.google.com')
 const data = fs.readFileSync('C:/Users/nicosm/work/regex/test.txt', 'utf8');
 
 function getIntWithPrompt(prompt){
 
     console.log(prompt)
-    answer = parseInt(readline.prompt())
+    var answer = Number(readline.prompt());
     while (!(Number.isInteger(answer))){
         console.log("That was not an integer, please try again")
         answer = Number(readline.prompt())
