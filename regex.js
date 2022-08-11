@@ -1,5 +1,5 @@
 const fs = require('fs');
-// const request = require('request');
+//const request = require('request');
 const readline = require('readline-sync');
 // const data = request('http://www.google.com')
 const data = fs.readFileSync('test.txt', 'utf8');
@@ -48,11 +48,23 @@ function getDomains(){
     console.log(domainsAboveMinFrequency)
 }
 
-function parsePhoneNumber(phonenumber){
-    //    return phonenumber.match(/((+\d{1,2}\s)|0)(((\d{3})\s){2}(\d{4})|((\d{4})\s)(\d{6})))/g)
-    if() phonenumber.match(/((\+\d{1,2}\s)|0)(((\d{3})\s){2}(\d{4})|((\d{4})\s)(\d{6}))/)
 
+getDomains()
+
+function parsePhoneNumber(phonenumber){
+
+    if(phonenumber == phonenumber.match(/((\+[0-9]{1,2}\s)|0)((([0-9]{3})\s){2}([0-9]{4})|(([0-9]{4})\s)([0-9]{6}))/g)){
+        return true;
+    }else{
+        return false;
     }
-    
-console.log(parsePhoneNumber("+44 7403 036844"))
-// getDomains()
+
+}
+
+console.log(parsePhoneNumber("+44 7777 737 767"))
+
+console.log(parsePhoneNumber("07403 036844"))
+
+
+
+
