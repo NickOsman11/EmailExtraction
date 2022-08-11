@@ -1,8 +1,8 @@
 const fs = require('fs');
-// const request = require('request');
+//const request = require('request');
 const readline = require('readline-sync');
 // const data = request('http://www.google.com')
-const data = fs.readFileSync('C:/Users/nicosm/work/regex/test.txt', 'utf8');
+const data = fs.readFileSync('test.txt', 'utf8');
 
 function getIntWithPrompt(prompt){
 
@@ -42,10 +42,27 @@ function getDomains(){
     console.log("The 10 most common domains are:")
     console.log(sortedDomains.slice(0, 10))
 
-    // var minFrequency = getIntWithPrompt("Enter a minimum frequency: ");
-    // domainsAboveMinFrequency = sortedDomains.filter(x => x[1] > minFrequency)
-    // console.log(domainsAboveMinFrequency)
+    var minFrequency = getIntWithPrompt("Enter a minimum frequency: ");
+    domainsAboveMinFrequency = sortedDomains.filter(x => x[1] > minFrequency)
+    console.log(domainsAboveMinFrequency)
 }
 
 
 getDomains()
+
+function parsePhoneNumber(phonenumber){
+
+    if(phonenumber == phonenumber.match(/((\+[0-9]{1,2}\s)|0)((([0-9]{3})\s){2}([0-9]{4})|(([0-9]{4})\s)([0-9]{6}))/g)){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+console.log(parsePhoneNumber("+44 7777 737 767"))
+
+console.log(parsePhoneNumber("07403 036844"))
+
+
+
