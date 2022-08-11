@@ -2,7 +2,7 @@ const fs = require('fs');
 // const request = require('request');
 const readline = require('readline-sync');
 // const data = request('http://www.google.com')
-const data = fs.readFileSync('C:/Users/nicosm/work/regex/test.txt', 'utf8');
+const data = fs.readFileSync('test.txt', 'utf8');
 
 function getIntWithPrompt(prompt){
 
@@ -30,6 +30,7 @@ function createDomainDictionary(){
 function sortDomainsByFrequency(dictionary){
 
     var domainArray = Object.keys(dictionary).map(key => {return [key, dictionary[key]]})
+    console.log(domainArray)
     var domainArray = domainArray.sort((a, b) => b[1] - a[1])
     return domainArray
 }
@@ -37,15 +38,21 @@ function sortDomainsByFrequency(dictionary){
 
 function getDomains(){
     
-    var uniqueDomains = createDomainDictionary();
-    var sortedDomains = sortDomainsByFrequency(uniqueDomains);
+    var domainDictionary = createDomainDictionary();
+    var sortedDomains = sortDomainsByFrequency(domainDictionary);
     console.log("The 10 most common domains are:")
     console.log(sortedDomains.slice(0, 10))
 
-    // var minFrequency = getIntWithPrompt("Enter a minimum frequency: ");
-    // domainsAboveMinFrequency = sortedDomains.filter(x => x[1] > minFrequency)
-    // console.log(domainsAboveMinFrequency)
+    var minFrequency = getIntWithPrompt("Enter a minimum frequency: ");
+    domainsAboveMinFrequency = sortedDomains.filter(x => x[1] > minFrequency)
+    console.log(domainsAboveMinFrequency)
 }
 
+function parsePhoneNumber(phonenumber){
+    //    return phonenumber.match(/((+\d{1,2}\s)|0)(((\d{3})\s){2}(\d{4})|((\d{4})\s)(\d{6})))/g)
+    if() phonenumber.match(/((\+\d{1,2}\s)|0)(((\d{3})\s){2}(\d{4})|((\d{4})\s)(\d{6}))/)
 
-getDomains()
+    }
+    
+console.log(parsePhoneNumber("+44 7403 036844"))
+// getDomains()
