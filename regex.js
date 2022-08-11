@@ -18,15 +18,10 @@ function getIntWithPrompt(prompt){
 
 function createDomainDictionary(){
 
-    domains = data.match(/(?<=@)([A-Za-z0-9-]*)(?=(\.[A-Za-z0-9-]*)+)/g)
-    uniqueDomains = [... new Set(domains)]
+    var domains = data.match(/(?<=@)([A-Za-z0-9-]*)(?=(\.[A-Za-z0-9-]*)+)/g);
+    var uniqueDomains = [... new Set(domains)];
     domainDictionary = {}
-
-    for (let i = 0; i < uniqueDomains.length; i++){
-        var currentDomain = uniqueDomains[i]
-        var numberOfOccurances = domains.filter(x => x == currentDomain).length
-        domainDictionary[currentDomain] = numberOfOccurances
-    }
+    uniqueDomains.forEach((domain) => (domainDictionary[domain] = domains.filter(x => x == domain).length));
 
     return domainDictionary
 }
@@ -47,9 +42,9 @@ function getDomains(){
     console.log("The 10 most common domains are:")
     console.log(sortedDomains.slice(0, 10))
 
-    var minFrequency = getIntWithPrompt("Enter a minimum frequency: ");
-    domainsAboveMinFrequency = sortedDomains.filter(x => x[1] > minFrequency)
-    console.log(domainsAboveMinFrequency)
+    // var minFrequency = getIntWithPrompt("Enter a minimum frequency: ");
+    // domainsAboveMinFrequency = sortedDomains.filter(x => x[1] > minFrequency)
+    // console.log(domainsAboveMinFrequency)
 }
 
 
